@@ -15,6 +15,32 @@
     <br>
     <br>
     <br>
+    <br>
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">companyCode</th>
+            <th scope="col">companyName</th>
+            <th scope="col">companyCEO</th>
+            <th scope="col">turnover</th>
+            <th scope="col">website</th>
+            <th scope="col">stockExchange</th>
+            <th scope="col">stockPrice</th>
+            <th scope="col">timeStamp</th>
+        </tr>
+        <tr scope="row" *ngFor="let company of companyArr">
+                <td>{{company.companyCode}}</td>
+                <td>{{company.companyName}}</td>
+                <td>{{company.companyCEO}}</td>
+                <td>{{company.turnover}}</td>
+                <td>{{company.website}}</td>
+                <td>{{company.stockExchange}}</td>
+                <td>{{company.stockPrice}}</td>
+                <td>{{company.timeStamp}}</td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <br>
     <h2>Add Company</h2>
     <br>
     <div class="mainDiv">
