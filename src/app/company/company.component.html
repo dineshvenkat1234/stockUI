@@ -1,0 +1,128 @@
+<head>
+
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  
+  </head>
+  <body>
+    <p>company works!</p>
+    <br>
+    <br>
+    <br>
+    <h2>Add Company</h2>
+    <br>
+    <div class="mainDiv">
+        <form #companyForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label>Enter Company Code</label>
+                <input type="text" class="form-conntrol" id="companyCode" required [(ngModel)]="company.companyCode" name="companyCode" #name="ngModel">
+            </div>
+            <div class="form-group">
+                <label>Enter Company Name</label>
+                <input type="text" class="form-conntrol" id="companyName" required [(ngModel)]="company.companyName" name="companyName" >
+            </div>
+            <div class="form-group">
+                <label>Enter Company CEO</label>
+                <input type="text" class="form-conntrol" id="companyCEO" required [(ngModel)]="company.companyCEO" name="companyCEO" >
+            </div>
+            <div class="form-group">
+                <label>Enter Company turnover</label>
+                <input type="text" class="form-conntrol" id="turnover" required [(ngModel)]="company.turnover" name="turnover" >
+            </div>
+            <div class="form-group">
+                <label>Enter Company website</label>
+                <input type="text" class="form-conntrol" id="website" required [(ngModel)]="company.website" name="website" >
+            </div>
+            <div class="form-group">
+                <label>Enter Company stockExchange</label>
+                <input type="text" class="form-conntrol" id="stockExchange" required [(ngModel)]="company.stockExchange" name="stockExchange" >
+            </div>
+            <div class="form-group">
+                <label>Enter Company stockPrice</label>
+                <input type="text" class="form-conntrol" id="stockPrice" required [(ngModel)]="company.stockPrice" name="stockPrice" >
+            </div>
+            <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h2>Delete Company</h2>
+    <br>
+    <div class="mainDiv">
+        <form #companyDeleteForm="ngForm" (ngSubmit)="deleteCompany()">
+            <div class="form-group">
+                <label>Enter Company Code to delete</label>
+                <input type="text" class="form-conntrol" id="companyId" required [(ngModel)]="companyId" name="companyId" #name="ngModel">
+            </div>
+            <button type="submit" class="btn btn-info">Delete</button>
+            </form>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <h2>Get Company by Id</h2>
+            <br>
+
+            <div class="mainDiv">
+                <form #getCompanyForm="ngForm" (ngSubmit)="getCompany()">
+                    <div class="form-group">
+                        <label>Enter Company Code</label>
+                        <input type="text" class="form-conntrol" id="companyCode" required [(ngModel)]="companyCode" name="companyCode" #name="ngModel">
+                    </div>
+                    <button type="submit" class="btn btn-info">Get Company</button>
+                    </form>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <h2>Add Stock price to company</h2>
+                    <br>
+                    <div class="mainDiv">
+                        <form #addStockForm="ngForm" (ngSubmit)="addStockPrice()">
+                            <div class="form-group">
+                                <label>Enter Company Code</label>
+                                <input type="text" class="form-conntrol" id="companyCode" required [(ngModel)]="newStock.companyCode" name="companyCode" #name="ngModel">
+                            </div>
+                           
+                            <div class="form-group">
+                                <label>Enter Company stockPrice</label>
+                                <input type="text" class="form-conntrol" id="stockPrice" required [(ngModel)]="newStock.stockPrice" name="stockPrice" >
+                            </div>
+                            <button type="submit" class="btn btn-info">Add Stock Price</button>
+                            </form>
+                            </div>
+
+                            <br>
+                    <br>
+                    <br>
+                    <h2>Update Stock price to company</h2>
+                    <br>
+                    <div class="mainDiv">
+                        <form #updateStockForm="ngForm" (ngSubmit)="updateStockPrice()">
+                            <div class="form-group">
+                                <label>Enter Company Code</label>
+                                <input type="text" class="form-conntrol" id="companyCode" required [(ngModel)]="updateStock.companyCode" name="companyCode" #name="ngModel">
+                            </div>
+                           
+                            <div class="form-group">
+                                <label>Enter Company stockPrice</label>
+                                <input type="text" class="form-conntrol" id="stockPrice" required [(ngModel)]="updateStock.stockPrice" name="stockPrice" >
+                            </div>
+                            <button type="submit" class="btn btn-info">Add Stock Price</button>
+                            </form>
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+  </body>
+
+
