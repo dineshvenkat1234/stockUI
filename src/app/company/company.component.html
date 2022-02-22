@@ -16,6 +16,7 @@
     <br>
     <br>
     <br>
+    
     <table class="table table-striped">
         <tr>
             <th scope="col">companyCode</th>
@@ -27,7 +28,7 @@
             <th scope="col">stockPrice</th>
             <th scope="col">timeStamp</th>
         </tr>
-        <tr scope="row" *ngFor="let company of companyArr">
+        <tr scope="row" *ngFor="let company of gridArr">
                 <td>{{company.companyCode}}</td>
                 <td>{{company.companyName}}</td>
                 <td>{{company.companyCEO}}</td>
@@ -143,6 +144,18 @@
                                 <input type="text" class="form-conntrol" id="stockPrice" required [(ngModel)]="updateStock.stockPrice" name="stockPrice" >
                             </div>
                             <button type="submit" class="btn btn-info">Add Stock Price</button>
+                            </form>
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <div>
+                            <form (ngSubmit)="getAverageStockPrice()">
+                            <button type="submit" class="btn btn-info">Get avarage Stock Price</button>
+                            <h3>Average Stock Price: {{avgStockPrice}}</h3>
+                            <h3>Maximum Stock Price: {{maxStockPrice}}</h3>
+                            <h3>Minimum Stock Price: {{minStockPrice}}</h3>
                             </form>
                             </div>
                             <br>

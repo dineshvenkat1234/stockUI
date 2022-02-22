@@ -13,20 +13,28 @@ export class CompanyComponent implements OnInit {
 
   ngOnInit(): void {
     this.viewAllCompanies();
+    
   }
 
   companyArr:Array<company>=[];
+  gridArr:Array<company>=[];
   public company=new company();
   public companyId:number| any;
   public companyCode:number | any;
   public newStock=new company();
   public updateStock=new company();
+  public avgStockPrice:number| any;
+  public maxStockPrice:number| any;
+  public minStockPrice:number| any;
+  public startDate:string| any;
+  public endDate:string| any;
 
   viewAllCompanies(){
     this.companyService.getAllCompanies().subscribe(
       data=>{
         console.log(Object.values(data));
         this.companyArr=Object.values(data);
+        this.gridArr=this.companyArr;
       },
       error=>{
         console.log(error);
@@ -39,6 +47,7 @@ export class CompanyComponent implements OnInit {
     this.companyService.addCompany(this.company).subscribe(
       data=>{
         console.log(Object.values(data));
+        this.companyArr.push(data);
       },
       error=>{
         console.log(error);
@@ -51,6 +60,8 @@ export class CompanyComponent implements OnInit {
     this.companyService.deleteCompany(this.companyId).subscribe(
       data=>{
         console.log(data);
+        let index=this.companyArr.findIndex(c=>c.companyCode==this.companyId);
+        this.companyArr.splice(index,1);
       },
       error=>{
         console.log(error);
@@ -62,6 +73,8 @@ export class CompanyComponent implements OnInit {
     this.companyService.getCompany(this.companyCode).subscribe(
       data=>{
         console.log(Object.values(data));
+        this.gridArr=[];
+        this.gridArr.push(data);
       },
       error=>{
         console.log(error);
@@ -90,4 +103,25 @@ export class CompanyComponent implements OnInit {
       }
     )
   }
+
+  getAverageStockPrice(){
+    let total=0;
+    let max=0,min=this.companyArr[0].stockPrice;
+    for (let index = 0; index < this.companyArr.length; index++) {
+      const companyElement = this.companyArr[index];
+      if (companyElement.stockPrice>max) {
+        max=companyElement.stockPrice;
+      }
+      if (companyElement.stockPrice<min) {
+        min=companyElement.stockPrice;
+      }
+      total=total+companyElement.stockPrice;
+    }
+    this.avgStockPrice=total/this.companyArr.length;
+    this.maxStockPrice=max;
+    this.minStockPrice=min;
+    console.log(this.avgStockPrice);
+  }
+
+  
 }
