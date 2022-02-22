@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { company } from './company';
 import { CompanyService } from './company.service';
 
+
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -16,6 +17,7 @@ export class CompanyComponent implements OnInit {
     
   }
 
+  
   companyArr:Array<company>=[];
   gridArr:Array<company>=[];
   public company=new company();
@@ -28,6 +30,8 @@ export class CompanyComponent implements OnInit {
   public minStockPrice:number| any;
   public startDate:string| any;
   public endDate:string| any;
+  displayedColumns: string[] = ['companyCode', 'companyName', 'companyCEO', 'turnover','website','stockExchange','stockPrice','timeStamp'];
+  dataSource = this.companyArr;
 
   viewAllCompanies(){
     this.companyService.getAllCompanies().subscribe(
@@ -48,9 +52,11 @@ export class CompanyComponent implements OnInit {
       data=>{
         console.log(Object.values(data));
         this.companyArr.push(data);
+        alert("Company added successfully!");
       },
       error=>{
         console.log(error);
+        alert("Unable to add Company");
       }
     )
   }
@@ -62,9 +68,11 @@ export class CompanyComponent implements OnInit {
         console.log(data);
         let index=this.companyArr.findIndex(c=>c.companyCode==this.companyId);
         this.companyArr.splice(index,1);
+        alert("Company Deleted!");
       },
       error=>{
         console.log(error);
+        alert("Unable to Delete Company");
       }
     )
   }
@@ -78,6 +86,7 @@ export class CompanyComponent implements OnInit {
       },
       error=>{
         console.log(error);
+        alert("Unable to Get Company");
       }
     )
   }
@@ -85,9 +94,11 @@ export class CompanyComponent implements OnInit {
     this.companyService.addStockPrice(this.newStock).subscribe(
       data=>{
         console.log(Object.values(data));
+        alert("Stock Price added successfully!");
       },
       error=>{
         console.log(error);
+        alert("Unable to add Stock Price");
       }
       
     )
@@ -97,9 +108,11 @@ export class CompanyComponent implements OnInit {
     this.companyService.updateStockPrice(this.updateStock).subscribe(
       data=>{
         console.log(Object.values(data));
+        alert("Stock Price updated successfully!");
       },
       error=>{
         console.log(error);
+        alert("Unable to update Stock Price");
       }
     )
   }
